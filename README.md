@@ -5,7 +5,7 @@
 3. barcode scanner
 
 ## Cloning The GitHub Repository
-The recommended way to get MEAN.js is to use git to directly clone the MEAN.JS repository:
+The recommended way to get ProntoApp is to use git to directly clone the ProntoApp repository:
 
 ```bash
 $ git clone https://github.com/matalent2010/ProntoApp.git
