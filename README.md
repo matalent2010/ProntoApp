@@ -18,9 +18,9 @@ $ phonegap plugin add phonegap-plugin-barcodescanner
 ```
 
 ```bash
-phonegap plugin add cordova-plugin-splashscreen
+$ phonegap plugin add cordova-plugin-splashscreen
 ```
 
 ```bash
-phonegap plugin add cordova-plugin-inappbrowser
+$ phonegap plugin add cordova-plugin-inappbrowser
 ```
