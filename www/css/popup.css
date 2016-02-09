@@ -1,0 +1,72 @@
+#backgroundPanel{
+    width: 100%;
+    height: 100%;
+    display:none;
+    z-index:1000;
+    position: fixed;
+    top:0px;
+    left:0px;
+}
+#backgroundPopup {
+    z-index:1001;
+    position: absolute;
+    height:100%;
+    width:100%;
+    display: none;
+    background:rgba(0,0,0,0.9);
+    top:0px;
+    left:0px;
+}
+#toPopup {
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    background: none repeat scroll 0 0 rgba(229, 229, 231, 1);
+    border-radius: 7px 7px 7px 7px;
+    color: #333333;
+    font-size: 14px;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 15%;
+    width: 360px;
+    z-index: 1002;
+}
+div.loader {
+    background: url("../img/loading-spinner.gif") no-repeat scroll 0 0 transparent;
+    height: 32px;
+    width: 32px;
+    display: none;
+    z-index: 9999;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    margin-left: -10px;
+}
+
+span.arrow {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #000000;
+    display: block;
+    height: 1px;
+    left: 40px;
+    position: relative;
+    top: 3px;
+    width: 1px;
+}
+
+div#popup_content {
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    padding: 20px 20px 30px 20px;  
+}
+
+@media (max-width: 480px) {
+
+div#toPopup {
+    width:90%;
+}
+
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/libs/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/popup.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Pronto Mobile App</title>
+    </head>
+
+    <body class="login">
+        <div class="app">
+            <div class="logo">
+                <img src="img/logo-big.png" alt=""/>
+            </div> <!-- END LOGO -->
+            <!-- BEGIN LOGIN -->
+            <div class="content" name='mainpage'>
+                <!-- BEGIN LOGIN FORM -->
+                <div class='login-form' >
+                    <h3 class="form-title">Select your account</h3>
+
+                    <div class="alert alert-danger display-hide">
+                        <button class="close" data-close="alert"></button>
+                        <span>Invalid username or password.</span>
+                    </div>
+                    <form class="login-form" novalidate="novalidate">
+                        <div>
+                            <button class="btn green pull-right" id='btnLogin'>Login</button> <!-- type="submit"  -->
+                        </div>
+                        <div class="form-group">                    
+                            <label class="control-label visible-ie8 visible-ie9">Username</label>
+                            <div class="input-icon">
+                                <select class="form-control" id='userlist' name="username" ></select>
+                            </div>
+                        </div>
+                        <div class="form-group password-item">
+                            <label class="control-label visible-ie8 visible-ie9">Password</label>
+                            <input class="form-control placeholder-no-fix" id='password' type="password" autocomplete="off" placeholder="Password" name="password" disabled="true" />
+                        </div>
+                        <div class="form-group">                            
+                            <input class="form-control placeholder-no-fix" id='iniLog' type="text" autocomplete="off" name="iniLog" value="true"/>
+                        </div>
+                    </form>
+
+                    <div class="form-actions">
+                        <a class="btn green pull-right" name="userinfo" id="userinfo">User Info</a>
+                        <a class="btn green pull-left" onclick="barcodeScanning();"> CodeScan </a>
+                    </div>                    
+                </div>
+                <img src="img/loading-spinner.gif" id="loadingspinner" alt="loading..."/>
+            </div> 
+            <div id="lodingHtml">
+                
+            </div>      
+        </div>
+
+        <div id="backgroundPanel">
+            <div id="toPopup">        
+                <div class="clear">
+                </div>
+                <div id="popup_content">
+                    <p class="pull-left">
+                        <input type="button" id="adduser" value="Add User">
+                    </p>
+                    <p class="pull-right">
+                        <input type="button" id="save" value="Save">
+                    </p>
+                    <table id="myTable">
+                         <tr><th>User Name</th><th>Password</th><th></th></tr>
+                    </table>
+
+                </div> <!--your content end-->
+            </div> <!--toPopup end-->
+            <div class="loader">
+            </div>
+            <div id="backgroundPopup">
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/libs/jquery-1.12.0.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap.js"></script>        
+        <script type="text/javascript" src="js/popup.js"></script> 
+        <script type="text/javascript" src="js/index.js"></script> 
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
