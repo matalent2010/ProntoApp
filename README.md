@@ -11,7 +11,7 @@ The recommended way to get ProntoApp is to use git to directly clone the ProntoA
 $ git clone https://github.com/matalent2010/ProntoApp.git
 ```
 
-#install plugins
+##install plugins
 
 ```bash
 $ phonegap plugin add phonegap-plugin-barcodescanner
