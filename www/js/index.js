@@ -16,10 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var MobileOS;
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        MobileOS = "";
     },
     // Bind Event Listeners
     //
@@ -34,16 +36,17 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        MobileOS = (navigator.userAgent.match(/iPhone|iPod|iPad/i)) ? "ios" : (navigator.userAgent.match(/Android/i)) == "Android" ? "android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "";        
+        // alert("Device OS: " + MobileOS + "\n userAgent: " + navigator.userAgent); 
+
+        // var deviceOS  = device.platform  ;  //fetch the device operating system
+        // var deviceOSVersion = device.version ;  //fetch the device OS version        
+        // alert("Device OS: " + deviceOS + "\nDevice OS Version: " + deviceOSVersion);   
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
     }
 };
@@ -87,33 +90,38 @@ jQuery(function($) {
             url: 'http://myusedrideisthebomb.com/admin/index.php',
             data: {
                 signout: true
-            }
-        });
-
-        $.ajax({
-            type: 'POST',
-            url: 'http://myusedrideisthebomb.com/admin/index.php',
-            data: {
-                username: $('#userlist').val(), 
-                password:$('#password').val(),
-                iniLog:'true', 
-                phonegapLog:'true'
             },
             error: function() {
                 $('#loadingspinner').hide();
                 alert("Internet Error");
             },
-            dataType: 'html',
             success: function(data, textStatus, jqXHR) {
-                $('#loadingspinner').hide();
-                if( loginSuccess(JSON.stringify(data)) == true ){
-                    window.open("http://myusedrideisthebomb.com/admin/cp-list-add.php", "_blank", "location=no");
-                    // window.open('http://myusedrideisthebomb.com/admin/', 'popUpWindow','height=400, width=650, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
-                } else {
-                    alert("Please check your username and password");
-                }
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://myusedrideisthebomb.com/admin/index.php',
+                    data: {
+                        username: $('#userlist').val(), 
+                        password:$('#password').val(),
+                        iniLog:'true', 
+                        mobile: MobileOS
+                    },
+                    error: function() {
+                        $('#loadingspinner').hide();
+                        alert("Internet Error");
+                    },
+                    dataType: 'html',
+                    success: function(data, textStatus, jqXHR) {
+                        $('#loadingspinner').hide();
+                        if( loginSuccess(JSON.stringify(data)) == true ){
+                            window.open("http://myusedrideisthebomb.com/admin/index.php", "_self", "hardwareback=no,location=no");
+                        } else {
+                            alert("Please check your username and password");
+                        }
+                    }   
+                });
             }   
         });
+        
     });
 
     loadDataFromLocal();
@@ -181,7 +189,7 @@ function barcodeScanning(){
           //       "Result: " + result.text + "\n" +
           //       "Format: " + result.format + "\n" +
           //       "Cancelled: " + result.cancelled);
-        window.open("http://myusedrideisthebomb.com/admin/cp-list-add.php?vin="+result.text, "_blank", "location=no");
+        window.open("http://myusedrideisthebomb.com/admin/cp-list-add.php?vin="+result.text, "_self", "location=no");
       }, 
       function (error) {
           alert("Scanning failed: " + error);
