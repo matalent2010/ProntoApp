@@ -1,7 +1,7 @@
 # ProntoApp
 
 1. Login User management
-2. login "http:\\www.ProntoDealer.com"
+2. login "http://www.ProntoDealer.com"
 3. barcode scanner
 
 ## Cloning The GitHub Repository
